@@ -1,6 +1,25 @@
-"use strict";
+'use strict';
 
-// для вывода в консоль vs code используем комманду node test.js
-console.log("Hello, Synergy!");
-console.log(5 + 2);
-console.log(70 / 2);
+// 1
+/*
+    Функцию await нельзя использовать независимо от async. Если использовать await внутри функции без async, получим синтаксическую ошибку.
+*/
+
+// 2
+/*
+    await ждет выполнения промиса.
+*/
+async function nameP() {
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => {resolve('Start')}, 3000);   
+    })
+    let result = await promise;
+    console.log(result);
+}
+nameP();
+
+// 3
+/*
+    Ключевое слово async перед функцией, обязывает ее всегда возвращать промис и позволяет использовать в теле функции await.
+    Await перед промисом заставит JS дождаться его выполнения, после чего, если промис завершается ошибкой, то будет сгенерировано исключение, иначе возвращается результат промиса.
+*/
